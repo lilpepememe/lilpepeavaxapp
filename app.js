@@ -1,0 +1,89 @@
+window.addEventListener('load', async () => {
+    let web3;
+
+    // Check if Web3 is available
+    if (typeof window.ethereum !== 'undefined') {
+        web3 = new Web3(window.ethereum);
+    } else if (typeof window.web3 !== 'undefined') {
+        web3 = new Web3(window.web3.currentProvider);
+    } else {
+        // Handle the case where the user doesn't have a Web3 provider (e.g., MetaMask not installed or not connected)
+        alert('Please install MetaMask or any other Web3 provider to use this application.');
+        return;
+    }
+
+    const connectButton = document.getElementById('connect-button');
+    const dot = document.getElementById('dot');
+    connectButton.addEventListener('click', async () => {
+        try {
+            // Request user's permission to connect
+            await window.ethereum.enable();
+            
+            // Get the connected account
+            const accounts = await web3.eth.getAccounts();
+            const account = accounts[0];
+
+            // Contract addresses
+            const lpepeAddress = '0xb9b646249e454027CbEF3f6BdA7a0238d1C5F055';
+            const rpepeAddress = '0xb36FAF341c7817D681F23BceDbd3d85467E5aD9F';
+            const bpepeAddress = '0x6AfBD798deED2d9dCA2B1122f8Bceff90b3Fd734';
+
+            // Contract ABI
+            const pepeABI = [
+                {
+                    "constant": true,
+                    "inputs": [{"name": "_owner", "type": "address"}],
+                    "name": "balanceOf",
+                    "outputs": [{"name": "balance", "type": "uint256"}],
+                    "type": "function"
+                }
+            ];
+
+            // Create instances of the contract using the contract addresses and ABI
+            const lpepeContract = new web3.eth.Contract(pepeABI,                lpepeAddress
+                );
+                const rpepeContract = new web3.eth.Contract(
+                    pepeABI,
+                    rpepeAddress
+                );
+                const bpepeContract = new web3.eth.Contract(
+                    pepeABI,
+                    bpepeAddress
+                );
+    
+                // Get the balances for each token
+                const lpepeBalance = await lpepeContract.methods
+                    .balanceOf(account)
+                    .call();
+                const rpepeBalance = await rpepeContract.methods
+                    .balanceOf(account)
+                    .call();
+                const bpepeBalance = await bpepeContract.methods
+                    .balanceOf(account)
+                    .call();
+    
+                // Update the balance display
+                document.getElementById("balance-lpepe").textContent = `lpepe balance: ${web3.utils.fromWei(
+                    lpepeBalance,
+                    "ether"
+                )}`;
+                document.getElementById("balance-rpepe").textContent = `rpepe balance: ${web3.utils.fromWei(
+                    rpepeBalance,
+                    "ether"
+                )}`;
+                document.getElementById("balance-bpepe").textContent = `bpepe balance: ${web3.utils.fromWei(
+                    bpepeBalance,
+                    "ether"
+                )}`;
+    
+                // Add a dot next to the button to indicate connection
+                dot.style.display = "inline-block";
+                connectButton.classList.add("connected");
+            } catch (error) {
+                // Handle errors during the connection process
+                console.error(error);
+                alert("An error occurred while connecting to MetaMask.");
+            }
+        });
+    });
+    

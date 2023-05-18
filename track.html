@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pepe Tracker Beta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            background-image: url('https://i.ibb.co/wwbKT6G/lpepe-10.png');
+            background-repeat: repeat;
+        }
+
+        h1 {
+            text-align: center;
+            color: green;
+            margin-top: 20px;
+        }
+
+        .tracker-container {
+            position: relative;
+            text-align: center;
+            margin: 30px auto;
+            width: fit-content;
+        }
+
+        .tracker-title {
+            display: inline-block;
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+
+        .dot-container {
+            position: absolute;
+            top: 50%;
+            left: -35px;
+            transform: translateY(-50%);
+            display: none;
+        }
+
+        .dot {
+            width: 30px;
+            height: 30px;
+            background-color: green;
+            border-radius: 50%;
+        }
+
+        .dot-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            height: 100%;
+        }
+
+        .connect-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .connect-button:hover {
+            background-color: darkgreen;
+        }
+
+        .connected .dot-container {
+            display: block;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        /* Additional Styling */
+        .token-container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 50px;
+        }
+
+        .token-box {
+            background-color: rgba(0, 128, 0, 0.5);
+            border: 3px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+        }
+
+        .token-box h2 {
+            margin-top: 0;
+        }
+
+        .token-box p {
+            margin: 10px 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<button class="go-back-button" onclick="window.location.href = 'index.html'" style="position: fixed; top: 20px; left: 20px; background-color: green; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Go Back</button>
+
+<body>
+    <h1>pepe tracker beta</h1>
+
+    <div class="tracker-container">
+        <div class="dot-container">
+            <div class="dot">
+                <span class="dot-text">●</span>
+            </div>
+        </div>
+        <div class="tracker-title">track your pepes across avax</div>
+    </div>
+
+    <button id="connect-button" class="connect-button">Connect MetaMask<span id="dot" class="dot"></span></button>
+
+    <style>
+        .token-box {
+            background-color: rgba(0, 128, 0, 0.5);
+            border: 3px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px; /* Adjust the width as desired */
+            margin: 10px auto; /* Center the boxes horizontally */
+        }
+    </style>
+    
+    <div class="token-container">
+        <div class="token-box">
+            <h2>lpepe</h2>
+            <p id="balance-lpepe">Loading...</p>
+        </div>
+    </div>
+    <div class="token-container">
+        <div class="token-box">
+            <h2>rpepe</h2>
+            <p id="balance-rpepe">Loading...</p>
+        </div>
+    </div>
+    <div class="token-container">
+        <div class="token-box">
+            <h2>bpepe</h2>
+            <p id="balance-bpepe">Loading...</p>
+        </div>
+    </div>
+    
+    </div>
+
+    <script>
+        // Your JavaScript code for connecting to the wallet and retrieving token balances
+        // should be placed here or in the "app.js" file
+    </script>
+</body>
+</html>
+
