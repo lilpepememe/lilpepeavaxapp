@@ -127,6 +127,39 @@
     </style>
 </head>
 <body>
+    <style>
+        #chart {
+            display: inline-block;
+            padding: 10px;
+            border-radius: 50px;
+            background-color: rgb(6, 128, 46);
+            overflow: hidden;
+        }
+    
+        #chart a {
+            display: block;
+            padding: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+    
+        #chart:hover a {
+            transform: scale(1.2);
+        }
+    
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    
+        #chart:hover {
+            animation: gradient 3s infinite;
+        }
+    </style>
+    
     <div id="chart">
         <a href="https://traderjoexyz.com/avalanche/trade?outputCurrency=0xb9b646249e454027cbef3f6bda7a0238d1c5f055">Swap on Trader Joe!</a>
     </div>
