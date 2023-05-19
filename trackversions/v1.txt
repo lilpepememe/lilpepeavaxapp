@@ -74,22 +74,8 @@
             background-color: darkgreen;
         }
 
-        /* Updated styling for Go Back button */
-        .go-back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: green;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .go-back-button:hover {
-            transform: scale(1.1);
+        .connected .dot-container {
+            display: block;
         }
 
         p {
@@ -122,6 +108,7 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
     <script src="app.js"></script>
 </head>
+<button class="go-back-button" onclick="window.location.href = 'index.html'" style="position: fixed; top: 20px; left: 20px; background-color: green; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Go Back</button>
 
 <body>
     <h1>pepe tracker beta</h1>
@@ -133,46 +120,46 @@
             </div>
         </div>
         <div class="tracker-title">track your pepes across avax</div>
-        </div>
-        <button class="go-back-button" onclick="window.location.href = 'index.html'">Go Back</button>
+    </div>
 
-<div class="connect-button-container">
     <button id="connect-button" class="connect-button">Connect MetaMask<span id="dot" class="dot"></span></button>
-</div>
 
-<style>
-    .token-box {
-        background-color: rgba(0, 128, 0, 0.5);
-        border: 3px solid black;
-        padding: 20px;
-        border-radius: 10px;
-        width: 300px; /* Adjust the width as desired */
-        margin: 10px auto; /* Center the boxes horizontally */
-    }
-</style>
+    <style>
+        .token-box {
+            background-color: rgba(0, 128, 0, 0.5);
+            border: 3px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px; /* Adjust the width as desired */
+            margin: 10px auto; /* Center the boxes horizontally */
+        }
+    </style>
+    
+    <div class="token-container">
+        <div class="token-box">
+            <h2>lpepe</h2>
+            <p id="balance-lpepe">Loading...</p>
+        </div>
+    </div>
+    <div class="token-container">
+        <div class="token-box">
+            <h2>rpepe</h2>
+            <p id="balance-rpepe">Loading...</p>
+        </div>
+    </div>
+    <div class="token-container">
+        <div class="token-box">
+            <h2>bpepe</h2>
+            <p id="balance-bpepe">Loading...</p>
+        </div>
+    </div>
+    
+    </div>
 
-<div class="token-container">
-    <div class="token-box">
-        <h2>lpepe</h2>
-        <p id="balance-lpepe">Loading...</p>
-    </div>
-</div>
-<div class="token-container">
-    <div class="token-box">
-        <h2>rpepe</h2>
-        <p id="balance-rpepe">Loading...</p>
-    </div>
-</div>
-<div class="token-container">
-    <div class="token-box">
-        <h2>bpepe</h2>
-        <p id="balance-bpepe">Loading...</p>
-    </div>
-</div>
-
-<script>
-    // Your JavaScript code for connecting to the wallet and retrieving token balances
-    // should be placed here or in the "app.js" file
-</script>
+    <script>
+        // Your JavaScript code for connecting to the wallet and retrieving token balances
+        // should be placed here or in the "app.js" file
+    </script>
 </body>
 </html>
+
